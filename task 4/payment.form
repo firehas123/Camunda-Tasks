@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "label": "Employee ID",
+      "type": "textfield",
+      "id": "Field_1kydr4k",
+      "key": "id"
+    },
+    {
+      "label": "Employee Name",
+      "type": "textfield",
+      "id": "Field_1hk7sq6",
+      "key": "item"
+    },
+    {
+      "label": "Salary",
+      "type": "number",
+      "id": "Field_0ga0i4b",
+      "key": "salary"
+    },
+    {
+      "label": "Degree",
+      "type": "textfield",
+      "id": "Field_111ag1b",
+      "key": "degree"
+    }
+  ],
+  "type": "default",
+  "id": "Form_Payment",
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.16"
+}

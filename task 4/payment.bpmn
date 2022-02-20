@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0aui0ws" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <bpmn:process id="Taking-Input" name="Payment Retrieval" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_0obelqn</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Entering-Record" name="Saving the task In our DB" camunda:type="external" camunda:topic="entering-record">
+      <bpmn:incoming>Flow_1872r89</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1axd8hr</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_1oyw02k" name="Finish">
+      <bpmn:incoming>SequenceFlow_1axd8hr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1axd8hr" sourceRef="Entering-Record" targetRef="EndEvent_1oyw02k" />
+    <bpmn:userTask id="User-Task" name="Taking Input by using Camunda Forms" camunda:formKey="camunda-forms:deployment:payment.form" camunda:assignee="demo">
+      <bpmn:incoming>Flow_0obelqn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1872r89</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1872r89" sourceRef="User-Task" targetRef="Entering-Record" />
+    <bpmn:sequenceFlow id="Flow_0obelqn" sourceRef="StartEvent_1" targetRef="User-Task" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Taking-Input">
+      <bpmndi:BPMNEdge id="Flow_1872r89_di" bpmnElement="Flow_1872r89">
+        <di:waypoint x="400" y="130" />
+        <di:waypoint x="500" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1axd8hr_di" bpmnElement="SequenceFlow_1axd8hr">
+        <di:waypoint x="600" y="130" />
+        <di:waypoint x="732" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="639.5" y="98.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0obelqn_di" bpmnElement="Flow_0obelqn">
+        <di:waypoint x="209" y="130" />
+        <di:waypoint x="300" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1j42goo_di" bpmnElement="User-Task">
+        <dc:Bounds x="300" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="179" y="148" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_17yjgnl_di" bpmnElement="Entering-Record">
+        <dc:Bounds x="500" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1oyw02k_di" bpmnElement="EndEvent_1oyw02k">
+        <dc:Bounds x="732" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="735" y="151" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
